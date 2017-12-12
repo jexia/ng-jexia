@@ -5,7 +5,15 @@
     "npmScope": "ngJexia",
     "latestMigration": "20171129-change-schema"
   },
-  "apps": [],
+  "apps": [
+    {
+      "name": "core",
+      "root": "libs/core/src",
+      "test": "../../../test.js",
+      "main": "index.ts",
+      "appRoot": ""
+    }
+  ],
   "e2e": {
     "protractor": {
       "config": "./protractor.conf.js"
@@ -31,7 +39,9 @@
     "schematics": {
       "collection": "@nrwl/schematics",
       "postGenerate": "npm run format",
-      "newProject": ["app", "lib"]
+      "newProject": [
+        "lib"
+      ]
     },
     "styleExt": "css",
     "component": {}
