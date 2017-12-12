@@ -1,44 +1,78 @@
 # NgJexia
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0 using [Nrwl Nx](https://nrwl.io/nx).
+The official library to use Jexia with Angular
 
-## Nrwl Extensions for Angular (Nx)
+## Install
 
-<a href="https://nrwl.io/nx"><img src="https://preview.ibb.co/mW6sdw/nx_logo.png"></a>
+```bash
+npm install @ngJexia/core --save
+```
 
-Nx is an open source toolkit for enterprise Angular applications.
+## Quick Start
 
-Nx is designed to help you create and build enterprise grade Angular applications. It provides an opinionated approach to application project structure and patterns.
+Open `app.module.ts`, import the Jexia module and specify your dataset configuration:
 
-## Quick Start & Documentation
+```ts
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { AppComponent } from './app.component';
+import { environment } from '../environments/environment';
+import { JexiaSdkModule } from '@ngJexia/core';
 
-[Watch a 5-minute video on how to get started with Nx.](http://nrwl.io/nx)
+@NgModule({
+  imports: [
+    BrowserModule,
+    JexiaSdkModule.initClient(environment.jexiaConfig)
+  ],
+  declarations: [ AppComponent ],
+  bootstrap: [ AppComponent ]
+})
+export class AppModule {}
+```
 
-## Generate your first application
+Use our service to access and manipulate your datasets.
 
-Run `ng generate app myapp` to generate an application. When using Nx, you can create multiple applications and libraries in the same CLI workspace. Read more [here](http://nrwl.io/nx).
+```ts
+import { Component } from '@angular/core';
+import { JexiaSdkService } from '@ngJexia/core';
 
-## Development server
+@Component({
+  selector: 'app-root',
+  templateUrl: 'app.component.html',
+  styleUrls: ['app.component.css']
+})
+export class AppComponent {
+  data: Promise<any>;
+  constructor(jexiaSdk: JexiaSdkService) {
+    this.data = this.jexiaSdk.initialization.then(() =>
+      this.jexiaSdk.dataset('skd_js').select().execute());
+  }
+}
+```
 
-Run `ng serve --app=myapp` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Then use it on your template:
 
-## Code scaffolding
+```html
+<pre>
+  data: {{ data | async | json }}
+</pre>
+```
 
-Run `ng generate component component-name --app=myapp` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Example app
 
-## Build
+You can find the code at this repository on `apps/example`, and run it with `npm start` command.
 
-Run `ng build --app=myapp` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+## Contributing
 
-## Running unit tests
+### Build
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run `npm run build` to build the project. The build artifacts will be stored in the `dist/*` directory.
 
-## Running end-to-end tests
+### Running unit tests
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Run `npm test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+### Running end-to-end tests
+
+Run `npm run e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 Before running the tests make sure you are serving the app via `ng serve`.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
