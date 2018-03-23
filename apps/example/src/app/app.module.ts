@@ -1,4 +1,4 @@
-import { JexiaSdkModule } from '@ngJexia/core';
+import { NgJexiaModule } from '@ngJexia/core';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -8,10 +8,10 @@ import { NxModule } from '@nrwl/nx';
   imports: [
     BrowserModule,
     NxModule.forRoot(),
-    JexiaSdkModule.initClient({
-      projectID: 'f47edb9c-a456-4188-b215-011b64ee08c7',
-      key: 'william@jexia.com',
-      secret: 'password'
+    NgJexiaModule.initialize({
+      projectID: '7402e44f-5a9e-492a-949a-dcc638f4cb2a',
+      key: '7b673f16-3006-4f45-86ba-ca8eeee3d1f0',
+      secret: 'hdenVmQBEk4CIYNP',
     }),
   ],
   declarations: [AppComponent],

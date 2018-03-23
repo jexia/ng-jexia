@@ -1,29 +1,39 @@
-import { JexiaSDKConfig, JexiaSdkService } from './jexia-sdk.service';
+import { JexiaDataset } from './jexia-sdk.service';
 import { InjectionToken, ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 
-export const JexiaSDKConfigToken = new InjectionToken<JexiaSDKConfig>('JexiaSDKConfigToken');
+export interface JexiaConfig {
+  projectID: string;
+  key: string;
+  secret: string;
+}
+
+export const JexiaSDKConfigToken = new InjectionToken<JexiaConfig>('JexiaSDKConfigToken');
+
+export function jexiaDatasetFactory(configToken) {
+  return new JexiaDataset(configToken);
+}
 
 @NgModule({
   providers: [
     {
-      provide: JexiaSdkService,
-      useFactory: configToken => new JexiaSdkService(configToken),
+      provide: JexiaDataset,
+      useFactory: jexiaDatasetFactory,
       deps: [JexiaSDKConfigToken],
     },
   ],
 })
-export class JexiaSdkModule {
+export class NgJexiaModule {
 
-  static initClient(config: JexiaSDKConfig): ModuleWithProviders {
+  static initialize(config: JexiaConfig): ModuleWithProviders {
     return {
-      ngModule: JexiaSdkModule,
+      ngModule: NgJexiaModule,
       providers: [
         { provide: JexiaSDKConfigToken, useValue: config },
       ]
     };
   }
 
-  constructor( @Optional() @SkipSelf() parentModule: JexiaSdkModule) {
+  constructor( @Optional() @SkipSelf() parentModule: NgJexiaModule) {
     if (parentModule) {
       throw new Error('JexiaSdkModule is already loaded.');
     }

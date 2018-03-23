@@ -1,2 +1,2 @@
-export { JexiaSdkService } from './src/jexia-sdk.service';
-export { JexiaSdkModule } from './src/core.module';
+export { JexiaDataset } from './src/jexia-sdk.service';
+export { NgJexiaModule, JexiaConfig } from './src/core.module';

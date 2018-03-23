@@ -1,26 +1,20 @@
+import { JexiaConfig } from './core.module';
 import { Injectable } from '@angular/core';
-import * as jexiaSDK from 'jexia-sdk-js/browser';
-
-export interface JexiaSDKConfig {
-  projectID: string;
-  key: string;
-  secret: string;
-}
+import { dataOperations, jexiaClient, Dataset } from 'jexia-sdk-js/browser';
 
 @Injectable()
-export class JexiaSdkService {
+export class JexiaDataset {
 
-  private dom = jexiaSDK.dataOperations();
-  private client = jexiaSDK.jexiaClient();
-
-  public initialization: Promise<any> = this.client.init(this.config, this.dom);
+  private dataOperationsModule = dataOperations();
+  private sdkClient = jexiaClient();
+  private init = this.sdkClient.init(this.config, this.dataOperationsModule);
 
   constructor(
-    private config: JexiaSDKConfig,
+    private config: JexiaConfig,
   ) { }
 
-  dataset(name: string) {
-    return this.dom.dataset(name);
+  get<T = any>(name: string): Dataset<T> {
+    return this.dataOperationsModule.dataset<T>(name);
   }
 
 }

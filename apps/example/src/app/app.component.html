@@ -7,9 +7,11 @@
 
 <h2>Nx</h2>
 
-<pre>
-  data: {{ data | async | json }}
-</pre>
+<ul>
+  <li *ngFor="let user of users | async">
+    <b>{{user.name}}:</b> {{user.age}}
+  </li>
+</ul>
 
 An open source toolkit for enterprise Angular applications.
 
