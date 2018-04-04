@@ -37,6 +37,13 @@
       "test": "../../../test.js",
       "main": "index.ts",
       "appRoot": ""
+    },
+    {
+      "name": "dataOperations",
+      "root": "libs/dataOperations/src",
+      "test": "../../../test.js",
+      "main": "index.ts",
+      "appRoot": ""
     }
   ],
   "e2e": {
