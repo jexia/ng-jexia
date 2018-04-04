@@ -1,5 +1,5 @@
-import { JexiaDataset } from '@ngJexia/core';
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { DataOperations } from '@ngJexia/dataOperations';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 interface User {
   name: string;
@@ -10,15 +10,15 @@ interface User {
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent {
 
-  userDataset = this.jexiaDataset.get<User>('myusers');
+  userDataset = this.dataOperations.dataset<User>('myusers');
   users = this.userDataset.select().execute();
 
   constructor(
-    private jexiaDataset: JexiaDataset
+    private dataOperations: DataOperations,
   ) {
     this.userDataset.insert([{ name: 'joao', age: 99 }]).execute();
   }
