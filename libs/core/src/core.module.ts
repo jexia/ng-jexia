@@ -1,41 +1,36 @@
-import { JexiaDataset } from './jexia-sdk.service';
-import { InjectionToken, ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
+import { InjectionToken, ModuleWithProviders, Provider, NgModule, Optional, SkipSelf } from '@angular/core';
+import { IAuthOptions } from 'jexia-sdk-js/browser';
+import { IModule } from 'jexia-sdk-js/api/core/module';
+import { JexiaClient } from './client.service';
 
-export interface JexiaConfig {
-  projectID: string;
-  key: string;
-  secret: string;
+export interface JexiaNgModule {
+  sdkModule: IModule;
+  providers?: Provider;
 }
 
-export const JexiaSDKConfigToken = new InjectionToken<JexiaConfig>('JexiaSDKConfigToken');
-
-export function jexiaDatasetFactory(configToken) {
-  return new JexiaDataset(configToken);
+export interface NgJexiaConfig extends IAuthOptions {
+  providers?: JexiaNgModule[];
 }
 
-@NgModule({
-  providers: [
-    {
-      provide: JexiaDataset,
-      useFactory: jexiaDatasetFactory,
-      deps: [JexiaSDKConfigToken],
-    },
-  ],
-})
+export const NgJexiaConfigToken = new InjectionToken<NgJexiaConfig>('NgJexiaConfig');
+
+@NgModule()
 export class NgJexiaModule {
 
-  static initialize(config: JexiaConfig): ModuleWithProviders {
+  static initialize({ providers = [], ...config }: NgJexiaConfig): ModuleWithProviders {
     return {
       ngModule: NgJexiaModule,
       providers: [
-        { provide: JexiaSDKConfigToken, useValue: config },
-      ]
+        { provide: JexiaClient, useValue: new JexiaClient(config, providers.map((m) => m.sdkModule)) },
+        { provide: NgJexiaConfigToken, useValue: config },
+        ...providers.reduce((p, m) => m.providers ? [...p, ...(m.providers as any)] : p, []),
+     , ],
     };
   }
 
   constructor( @Optional() @SkipSelf() parentModule: NgJexiaModule) {
     if (parentModule) {
-      throw new Error('JexiaSdkModule is already loaded.');
+      throw new Error('NgJexiaModule is already loaded.');
     }
   }
 }
