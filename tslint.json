@@ -1,4 +1,5 @@
 {
+  "extends": "tslint:recommended",
   "rulesDirectory": [
     "node_modules/codelyzer",
     "node_modules/@nrwl/schematics/src/tslint"
@@ -96,6 +97,14 @@
       "element",
       "app",
       "kebab-case"
+    ],
+    "quotemark": [true, "single"],
+    "ordered-imports": false,
+    "ban-types": false,
+    "jsdoc-format": false,
+    "interface-name": [
+      true,
+      "never-prefix"
     ],
     "use-input-property-decorator": true,
     "use-output-property-decorator": true,
