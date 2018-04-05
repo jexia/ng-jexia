@@ -3,24 +3,74 @@ import { IAuthOptions } from 'jexia-sdk-js/browser';
 import { IModule } from 'jexia-sdk-js/api/core/module';
 import { JexiaClient } from './client.service';
 
-export interface JexiaModule {
+/**
+ * Internal Jexia Module Interface
+ */
+export interface SubJexiaModule {
+  /**
+   * Jexia JavaScript SDK Module Instance
+   */
   sdkModule: IModule;
+  /**
+   * Angular servicers that will be provider
+   */
   providers?: Provider;
 }
 
+/**
+ * Configuration options to initialize Jexia Module
+ */
 export interface NgJexiaConfig extends IAuthOptions {
-  providers?: JexiaModule[];
+  /**
+   * Internal Jexia modules that will be used
+   */
+  providers?: SubJexiaModule[];
 }
 
+/**
+ * @internal
+ */
 export const NgJexiaConfigToken = new InjectionToken<NgJexiaConfig>('NgJexiaConfig');
 
-export function getSdkModules(m: JexiaModule) { return m.sdkModule; }
+/**
+ * @internal
+ */
+export function getSdkModules(m: SubJexiaModule) { return m.sdkModule; }
 
-export function getModuleProviders(p: JexiaModule[], m: JexiaModule) { return m.providers ? [...p, ...(m.providers as any)] : p; }
+/**
+ * @internal
+ */
+export function getModuleProviders(p: SubJexiaModule[], m: SubJexiaModule) { return m.providers ? [...p, ...(m.providers as any)] : p; }
 
+/**
+ * Main Module for ng-jexia, the Angular Adapter of Jexia JavaScript SDK
+ *
+ * @example
+ * ```typescript
+ * import { NgJexiaModule, DataOperationsModule } from 'ng-jexia';
+ *
+ * @NgModule({
+ *   imports: [
+ *     BrowserModule,
+ *     NgJexiaModule.initialize({
+ *       projectID: 'projectID',
+ *       key: 'key',
+ *       secret: 'secret',
+ *       providers: [
+ *         DataOperationsModule,
+ *       ],
+ *     }),
+ *   ],
+ * })
+ * export class AppModule { }
+ * ```
+ */
 @NgModule()
 export class NgJexiaModule {
 
+  /**
+   * Initialization method of ng-jexia module that receive configuration parameters and jexia modules
+   */
   static initialize({ providers = [], ...config }: NgJexiaConfig): ModuleWithProviders {
     return {
       ngModule: NgJexiaModule,

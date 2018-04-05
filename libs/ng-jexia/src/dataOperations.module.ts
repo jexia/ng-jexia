@@ -1,11 +1,17 @@
 import { DataOperations, sdkDataOperationsModule } from './dataOperations.service';
-import { JexiaModule } from './core.module';
+import { SubJexiaModule } from './core.module';
 
-class DataOperationsModuleClass implements JexiaModule {
+/**
+ * @internal
+ */
+class DataOperationsModuleClass implements SubJexiaModule {
   sdkModule = sdkDataOperationsModule;
   providers = [
     DataOperations,
   ];
 }
 
-export const DataOperationsModule: JexiaModule = new DataOperationsModuleClass();
+/**
+ * Data Operation Module contain the sdk module and the providers
+ */
+export const DataOperationsModule: SubJexiaModule = new DataOperationsModuleClass();

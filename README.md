@@ -5,7 +5,7 @@ The official library to use Jexia with Angular
 ## Install
 
 ```bash
-npm install @ngJexia/core --save
+npm install ng-jexia --save
 ```
 
 ## Quick Start
@@ -13,16 +13,17 @@ npm install @ngJexia/core --save
 Open `app.module.ts`, import the Jexia module and specify your dataset configuration:
 
 ```ts
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
-import { environment } from '../environments/environment';
-import { JexiaSdkModule } from '@ngJexia/core';
+import { NgJexiaModule, DataOperationsModule } from 'ng-jexia';
 
 @NgModule({
   imports: [
     BrowserModule,
-    JexiaSdkModule.initClient(environment.jexiaConfig)
+    NgJexiaModule.initialize({
+      ...environment.jexiaConfig,
+      providers: [
+        DataOperationsModule,
+      ],
+    })
   ],
   declarations: [ AppComponent ],
   bootstrap: [ AppComponent ]
@@ -34,7 +35,7 @@ Use our service to access and manipulate your datasets.
 
 ```ts
 import { Component } from '@angular/core';
-import { JexiaSdkService } from '@ngJexia/core';
+import { DataOperations } from 'ng-jexia';
 
 @Component({
   selector: 'app-root',
@@ -42,11 +43,13 @@ import { JexiaSdkService } from '@ngJexia/core';
   styleUrls: ['app.component.css']
 })
 export class AppComponent {
-  data: Promise<any>;
-  constructor(jexiaSdk: JexiaSdkService) {
-    this.data = this.jexiaSdk.initialization.then(() =>
-      this.jexiaSdk.dataset('skd_js').select().execute());
-  }
+
+  userDataset = this.dataOperations.dataset<User>('myusers');
+  users = this.userDataset.select().execute();
+
+  constructor(
+    private dataOperations: DataOperations,
+  ) {}
 }
 ```
 
