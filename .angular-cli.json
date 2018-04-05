@@ -3,7 +3,7 @@
   "project": {
     "name": "ng-jexia",
     "npmScope": "ngJexia",
-    "latestMigration": "20171129-change-schema"
+    "latestMigration": "20180328-add-nx-lint"
   },
   "apps": [
     {
@@ -18,7 +18,7 @@
       "main": "main.ts",
       "polyfills": "polyfills.ts",
       "test": "../../../test.js",
-      "tsconfig": "../../../tsconfig.app.json",
+      "tsconfig": "tsconfig.app.json",
       "testTsconfig": "../../../tsconfig.spec.json",
       "prefix": "app",
       "styles": [
@@ -29,14 +29,17 @@
       "environments": {
         "dev": "environments/environment.ts",
         "prod": "environments/environment.prod.ts"
-      }
+      },
+      "tags": []
     },
     {
       "name": "ng-jexia",
       "root": "libs/ng-jexia/src",
       "test": "../../../test.js",
       "main": "index.ts",
-      "appRoot": ""
+      "appRoot": "",
+      "tsconfig": "tsconfig.app.json",
+      "tags": []
     }
   ],
   "e2e": {
@@ -46,13 +49,16 @@
   },
   "lint": [
     {
-      "project": "./tsconfig.app.json"
+      "project": "./tsconfig.spec.json",
+      "exclude": "**/node_modules/**"
     },
     {
-      "project": "./tsconfig.spec.json"
+      "project": "./apps/example/src/tsconfig.app.json",
+      "exclude": "**/node_modules/**"
     },
     {
-      "project": "./tsconfig.e2e.json"
+      "project": "./apps/example/e2e/tsconfig.e2e.json",
+      "exclude": "**/node_modules/**"
     }
   ],
   "test": {

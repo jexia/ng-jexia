@@ -1,4 +1,4 @@
-import { IAuthOptions, Client } from 'jexia-sdk-js/browser';
+import { IAuthOptions } from 'jexia-sdk-js/browser';
 import { Injectable } from '@angular/core';
 import { jexiaClient } from 'jexia-sdk-js/browser';
 import { IModule } from 'jexia-sdk-js/api/core/module';

@@ -84,7 +84,6 @@
       true,
       "allow-null-check"
     ],
-    "typeof-compare": true,
     "unified-signatures": true,
     "variable-name": false,
     "directive-selector": [
@@ -99,7 +98,10 @@
       "app",
       "kebab-case"
     ],
-    "quotemark": [true, "single"],
+    "quotemark": [
+      true,
+      "single"
+    ],
     "ordered-imports": false,
     "ban-types": false,
     "jsdoc-format": false,
@@ -119,14 +121,22 @@
     "no-access-missing-member": true,
     "templates-use-public": true,
     "invoke-injectable": true,
-
     "nx-enforce-module-boundaries": [
       true,
       {
-        "npmScope": "ngJexia",
-        "lazyLoad": [],
-        "allow": []
+        "allow": [],
+        "depConstraints": [
+          {
+            "sourceTag": "*",
+            "onlyDependOnLibsWithTags": [
+              "*"
+            ]
+          }
+        ]
       }
-    ]
+    ],
+    "deprecation": {
+      "severity": "warn"
+    }
   }
 }

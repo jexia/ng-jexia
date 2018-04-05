@@ -5,11 +5,9 @@ import { DataOperations } from './dataOperations.service';
 import { Subject } from 'rxjs/Subject';
 
 describe('DataOperations', () => {
-
   beforeEach(() => mockPrototypeOf(DataOperationsModule, { returnValue: Promise.resolve({}) }));
 
   describe('when getting a dataset reference', () => {
-
     it('should request it to the data operations module with the dataset name', () => {
       const subject = new DataOperations();
       const name = 'datasetname';
@@ -24,11 +22,9 @@ describe('DataOperations', () => {
       const result = subject.dataset('datasetname');
       expect(result).toBe(myDataset);
     });
-
   });
 
   describe('when terminating', () => {
-
     it('should return itself at the return promise', async () => {
       const subject = new DataOperations();
       const result = await subject.terminate();
@@ -50,7 +46,5 @@ describe('DataOperations', () => {
         });
       });
     });
-
   });
-
 });
