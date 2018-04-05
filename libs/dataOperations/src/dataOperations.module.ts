@@ -1,7 +1,7 @@
 import { DataOperations, dataOperationsModule } from './dataOperations.service';
-import { JexiaNgModule } from '@ngJexia/core';
+import { JexiaModule } from '@ngJexia/core';
 
-class DataOperationsModuleClass implements JexiaNgModule {
+class DataOperationsModuleClass implements JexiaModule {
   sdkModule = dataOperationsModule;
   providers = [
     DataOperations,

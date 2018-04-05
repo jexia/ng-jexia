@@ -3,16 +3,20 @@ import { IAuthOptions } from 'jexia-sdk-js/browser';
 import { IModule } from 'jexia-sdk-js/api/core/module';
 import { JexiaClient } from './client.service';
 
-export interface JexiaNgModule {
+export interface JexiaModule {
   sdkModule: IModule;
   providers?: Provider;
 }
 
 export interface NgJexiaConfig extends IAuthOptions {
-  providers?: JexiaNgModule[];
+  providers?: JexiaModule[];
 }
 
 export const NgJexiaConfigToken = new InjectionToken<NgJexiaConfig>('NgJexiaConfig');
+
+export function getSdkModules(m: JexiaModule) { return m.sdkModule; }
+
+export function getModuleProviders(p: JexiaModule[], m: JexiaModule) { return m.providers ? [...p, ...(m.providers as any)] : p; }
 
 @NgModule()
 export class NgJexiaModule {
@@ -21,10 +25,10 @@ export class NgJexiaModule {
     return {
       ngModule: NgJexiaModule,
       providers: [
-        { provide: JexiaClient, useValue: new JexiaClient(config, providers.map((m) => m.sdkModule)) },
+        { provide: JexiaClient, useValue: new JexiaClient(config, providers.map(getSdkModules)) },
         { provide: NgJexiaConfigToken, useValue: config },
-        ...providers.reduce((p, m) => m.providers ? [...p, ...(m.providers as any)] : p, []),
-     , ],
+        ...providers.reduce(getModuleProviders, []),
+      ],
     };
   }
 

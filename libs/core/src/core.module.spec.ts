@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { NgJexiaModule, NgJexiaConfigToken, JexiaNgModule } from './core.module';
+import { NgJexiaModule, NgJexiaConfigToken, JexiaModule } from './core.module';
 import { JexiaClient } from './client.service';
 import { mockPrototypeOf } from 'testUtils';
 
@@ -48,7 +48,7 @@ describe('CoreModule', () => {
   });
 
   it('should provide sub module providers', () => {
-    const providers: JexiaNgModule[] = [{
+    const providers: JexiaModule[] = [{
       sdkModule: {} as any,
       providers: [
         TestClassProvider,
@@ -64,7 +64,7 @@ describe('CoreModule', () => {
 
   it('should provide sub modules to the jexia client', () => {
     const sdkModule = { a: 1, b: 2, c: 3 } as any;
-    const providers: JexiaNgModule[] = [{
+    const providers: JexiaModule[] = [{
       sdkModule,
     }];
     TestBed.configureTestingModule({

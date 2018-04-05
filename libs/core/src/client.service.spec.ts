@@ -12,7 +12,8 @@ describe('JexiaClient', () => {
 
     it('should initialize the sdk client at the construction time', () => {
       const config = {} as any, myModule = {} as any;
-      const subject = new JexiaClient(config, [myModule]);
+      // tslint:disable-next-line:no-unused-expression
+      new JexiaClient(config, [myModule]);
       expect(Client.prototype.init).toHaveBeenCalledWith(config, myModule);
     });
 
