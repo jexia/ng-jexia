@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng-packagr -p libs/core/package.json",
+    "build": "ng-packagr -p libs/ng-jexia/package.json",
     "test": "ng test",
     "lint": "ng lint --type-check",
     "e2e": "ng e2e",

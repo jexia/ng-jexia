@@ -32,15 +32,8 @@
       }
     },
     {
-      "name": "core",
-      "root": "libs/core/src",
-      "test": "../../../test.js",
-      "main": "index.ts",
-      "appRoot": ""
-    },
-    {
-      "name": "dataOperations",
-      "root": "libs/dataOperations/src",
+      "name": "ng-jexia",
+      "root": "libs/ng-jexia/src",
       "test": "../../../test.js",
       "main": "index.ts",
       "appRoot": ""

@@ -5,8 +5,8 @@
     "module": "es2015",
     "baseUrl": ".",
     "paths": {
-      "@ngJexia/*": [
-        "libs/*"
+      "ng-jexia": [
+        "libs/ng-jexia"
       ]
     }
   },

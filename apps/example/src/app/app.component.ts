@@ -1,4 +1,4 @@
-import { DataOperations } from '@ngJexia/dataOperations';
+import { DataOperations } from 'ng-jexia';
 import { Component, ViewEncapsulation } from '@angular/core';
 
 interface User {

@@ -11,8 +11,8 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "@ngJexia/*": [
-        "libs/*"
+      "ng-jexia": [
+        "libs/ng-jexia"
       ]
     }
   },
