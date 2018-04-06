@@ -6,6 +6,9 @@
     "lib": {
       "entryFile": "index.ts"
     },
-    "dest": "dist/ng-jexia"
+    "dest": "../../dist/ng-jexia"
+  },
+  "peerDependencies": {
+    "jexia-sdk-js": "^3.2.5"
   }
 }

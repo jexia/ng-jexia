@@ -1,6 +1,6 @@
 {
   "name": "ng-jexia",
-  "version": "0.0.0",
+  "version": "0.0.0-development",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -20,7 +20,8 @@
     "postinstall": "./node_modules/.bin/nx postinstall",
     "update": "./node_modules/.bin/nx update",
     "update:check": "./node_modules/.bin/nx update check",
-    "update:skip": "./node_modules/.bin/nx update skip"
+    "update:skip": "./node_modules/.bin/nx update skip",
+    "semantic-release": "semantic-release"
   },
   "config": {
     "commitizen": {
@@ -70,12 +71,17 @@
     "@angular/compiler-cli": "5.2.9",
     "@angular/language-service": "5.2.9",
     "@compodoc/compodoc": "^1.1.1",
+    "@semantic-release/changelog": "^2.0.1",
+    "@semantic-release/git": "^3.1.1",
+    "@semantic-release/github": "^4.2.8",
+    "@semantic-release/npm": "^3.2.2",
     "@nrwl/schematics": "*",
     "@types/jasmine": "~2.5.53",
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "~6.0.60",
     "codelyzer": "~3.1.1",
     "commitizen": "^2.9.6",
+    "condition-circle": "^2.0.1",
     "husky": "^0.14.3",
     "jasmine-core": "~2.8.0",
     "jasmine-spec-reporter": "~4.2.1",
@@ -88,10 +94,38 @@
     "ng-packagr": "^2.2.0",
     "prettier": "1.10.2",
     "protractor": "~5.1.2",
+    "semantic-release": "^15.1.5",
     "shelljs": "^0.8.1",
     "ts-node": "^4.1.0",
     "tslint": "~5.9.1",
     "typescript": "2.6.2",
     "validate-commit-msg": "^2.14.0"
+  },
+  "release": {
+    "branch": "master",
+    "verifyConditions": [
+      "condition-circle",
+      "@semantic-release/changelog",
+      {
+        "path": "@semantic-release/npm",
+        "pkgRoot": "dist/ng-jexia"
+      },
+      "@semantic-release/git"
+    ],
+    "prepare": [
+      "@semantic-release/changelog",
+      {
+        "path": "@semantic-release/npm",
+        "pkgRoot": "dist/ng-jexia"
+      }
+    ],
+    "publish": [
+      {
+        "path": "@semantic-release/npm",
+        "pkgRoot": "dist/ng-jexia"
+      },
+      "@semantic-release/git",
+      "@semantic-release/github"
+    ]
   }
 }
