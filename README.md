@@ -1,5 +1,7 @@
 # NgJexia
 
+[![CircleCI](https://circleci.com/gh/jexia/ng-jexia.svg?style=svg)](https://circleci.com/gh/jexia/ng-jexia)
+
 The official library to use Jexia with Angular
 
 ## Install
@@ -61,21 +63,22 @@ Then use it on your template:
 </pre>
 ```
 
-## Example app
+## Developer Guide
 
-You can find the code at this repository on `apps/example`, and run it with `npm start` command.
+### Example app
 
-## Contributing
+You can find runnable the code at this repository on `apps/example`, use your own credentials at the `app.module.ts`,
+and run the whole application it with `npm start` command at the root of this project.
 
-### Build
+### Api Docs
 
-Run `npm run build` to build the project. The build artifacts will be stored in the `dist/*` directory.
+Check out the [ng-jexia docs](https://jexia.github.io/ng-jexia/) and the [JavaScript SDK Docs](https://jexia.github.io/jexia-sdk-js/)
+for a detailed view of the Api of both this Angular adapter and the original [JavaScript SDK](https://github.com/jexia/jexia-sdk-js/).
 
-### Running unit tests
+### Contributing
 
-Run `npm test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+You can find all the steps at the [Contributing Guide](CONTRIBUTING.md).
 
-### Running end-to-end tests
+## License
 
-Run `npm run e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+[MIT](LICENSE)
