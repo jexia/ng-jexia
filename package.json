@@ -10,6 +10,7 @@
     "lint": "./node_modules/.bin/nx lint && ng lint --type-check",
     "e2e": "ng e2e",
     "docs": "compodoc ./libs -n NgJexia -p ./tsconfig.json -d docs --theme 'gitbook' --disablePrivate --disableProtected --disableInternal --disableGraph",
+    "docs:deploy": "ts-node tools/gh-pages-publish",
     "commit": "git-cz",
     "commitmsg": "validate-commit-msg",
     "affected:apps": "./node_modules/.bin/nx affected apps",
@@ -28,6 +29,18 @@
       "types": "conventional-commit-types",
       "helpMessage": "Use \"npm run commit\" instead, we use conventional-changelog format :) (https://github.com/commitizen/cz-cli)"
     }
+  },
+  "author": "Jexia <community@jexia.com>",
+  "contributors": [
+    {
+      "name": "William Grasel",
+      "email": "d.ru.fo.s+github@gmail.com",
+      "url": "https://twitter.com/willgmbr"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jexia/ng-jexia.git"
   },
   "dependencies": {
     "@angular-devkit/core": "^0.4.6",
@@ -73,7 +86,8 @@
     "ng-packagr": "^2.2.0",
     "prettier": "1.10.2",
     "protractor": "~5.1.2",
-    "ts-node": "~4.1.0",
+    "shelljs": "^0.8.1",
+    "ts-node": "^4.1.0",
     "tslint": "~5.9.1",
     "typescript": "2.6.2",
     "validate-commit-msg": "^2.14.0"
