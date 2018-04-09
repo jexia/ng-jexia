@@ -6,8 +6,10 @@ The official library to use Jexia with Angular
 
 ## Install
 
+Install this package along with Jexia JavaScript JDK:
+
 ```bash
-npm install ng-jexia --save
+npm install ng-jexia jexia-sdk-js --save
 ```
 
 ## Quick Start
