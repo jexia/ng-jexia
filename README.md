@@ -77,8 +77,8 @@ for a detailed view of the Api of both this Angular adapter and the original [Ja
 
 ### Contributing
 
-You can find all the steps at the [Contributing Guide](CONTRIBUTING.md).
+You can find all the steps at the [Contributing Guide](https://jexia.github.io/ng-jexia/contributing.html).
 
 ## License
 
-[MIT](LICENSE)
+[MIT](https://jexia.github.io/ng-jexia/license.html)
