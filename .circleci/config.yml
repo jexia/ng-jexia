@@ -8,6 +8,7 @@ jobs:
       - run: npm install
       - run: npm run lint
       - run: npm test
+      - run: npm run aot-test
       - run: npm run docs
       - run: npm run build
   deploy:
