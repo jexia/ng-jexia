@@ -35,12 +35,19 @@ export const NgJexiaConfigToken = new InjectionToken<NgJexiaConfig>('NgJexiaConf
 /**
  * @internal
  */
+export const NgJexiaModulesToken = new InjectionToken<Provider>('NgJexiaModules');
+
+/**
+ * @internal
+ */
 export function getSdkModules(m: SubJexiaModule) { return m.sdkModule; }
 
 /**
  * @internal
  */
-export function getModuleProviders(p: SubJexiaModule[], m: SubJexiaModule) { return m.providers ? [...p, ...(m.providers as any)] : p; }
+export function getModuleProviders(p: SubJexiaModule[], m: SubJexiaModule): any[] {
+  return m.providers ? [...p, ...(m.providers as any)] : p;
+}
 
 /**
  * Main Module for ng-jexia, the Angular Adapter of Jexia JavaScript SDK
@@ -75,10 +82,17 @@ export class NgJexiaModule {
     return {
       ngModule: NgJexiaModule,
       providers: [
-        { provide: JexiaClient, useValue: new JexiaClient(config, providers.map(getSdkModules)) },
         { provide: NgJexiaConfigToken, useValue: config },
-        ...providers.reduce(getModuleProviders, []),
-      ],
+        { provide: NgJexiaModulesToken, useValue: providers.map(getSdkModules) },
+        {
+          provide: JexiaClient,
+          useClass: JexiaClient,
+          deps: [
+            NgJexiaConfigToken,
+            NgJexiaModulesToken,
+          ],
+        },
+      ].concat(providers.reduce(getModuleProviders, [])),
     };
   }
 
