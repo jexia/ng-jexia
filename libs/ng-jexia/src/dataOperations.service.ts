@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { dataOperations, Dataset, DataOperationsModule } from 'jexia-sdk-js/browser';
+import { JexiaClient } from './client.service';
 
 /**
  * @internal
@@ -11,6 +12,13 @@ export const sdkDataOperationsModule: DataOperationsModule = dataOperations();
  */
 @Injectable()
 export class DataOperations {
+
+  /**
+   * @internal
+   */
+  constructor(
+    private client: JexiaClient,
+  ) { }
 
   /**
    * Gets a dataset instance of the given name and type
@@ -29,6 +37,7 @@ export class DataOperations {
    * ```
    */
   dataset<T = any>(name: string): Dataset<T> {
+    this.client.init();
     return sdkDataOperationsModule.dataset<T>(name);
   }
 

@@ -2,16 +2,11 @@ import { DataOperations, sdkDataOperationsModule } from './dataOperations.servic
 import { SubJexiaModule } from './core.module';
 
 /**
- * @internal
- */
-class DataOperationsModuleClass implements SubJexiaModule {
-  sdkModule = sdkDataOperationsModule;
-  providers = [
-    DataOperations,
-  ];
-}
-
-/**
  * Data Operation Module contain the sdk module and the providers
  */
-export const DataOperationsModule: SubJexiaModule = new DataOperationsModuleClass();
+export const DataOperationsModule: SubJexiaModule = {
+  get sdkModule() { return sdkDataOperationsModule; },
+  providers: [
+    DataOperations,
+  ],
+};
