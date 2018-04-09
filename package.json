@@ -12,7 +12,7 @@
     "tdd": "ng test",
     "lint": "./node_modules/.bin/nx lint && ng lint --type-check",
     "e2e": "ng e2e",
-    "docs": "compodoc ./libs -n NgJexia -p ./tsconfig.json -d docs --theme 'gitbook' --disablePrivate --disableProtected --disableInternal --disableGraph",
+    "docs": "compodoc ./libs -n NgJexia -p ./tsconfig.json -d docs --theme 'gitbook' --disablePrivate --disableProtected --disableInternal --disableGraph  --includes tools --includesName Guides",
     "docs:deploy": "ts-node tools/gh-pages-publish",
     "commit": "git-cz",
     "commitmsg": "validate-commit-msg",

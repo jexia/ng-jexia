@@ -1,6 +1,6 @@
 # Contribution Guide
 
-[First please read and abide by the Code of Conduct](CODE_OF_CONDUCT.md).
+[First please read and abide by the Code of Conduct](https://jexia.github.io/ng-jexia/additional-documentation/code-of-conduct.html).
 
 ## Environment
 
