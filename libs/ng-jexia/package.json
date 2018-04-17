@@ -22,6 +22,7 @@
     "url": "https://github.com/jexia/ng-jexia.git"
   },
   "peerDependencies": {
+    "@angular/core": "^5.2.9",
     "jexia-sdk-js": "^3.2.5"
   }
 }
