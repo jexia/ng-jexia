@@ -1,8 +1,8 @@
 // tslint:disable:one-variable-per-declaration
-import { mockPrototypeOf } from '../../../testUtils';
+import { mockPrototypeOf } from '../testUtils';
 import { DataOperationsModule } from 'jexia-sdk-js/api/dataops/dataOperationsModule';
 import { DataOperations } from './dataOperations.service';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 
 function createSubject({
   clientMock = jasmine.createSpyObj('clientMock', ['init']),

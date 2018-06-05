@@ -8,9 +8,9 @@ jobs:
       - run: npm install
       - run: npm run lint
       - run: npm test
+      - run: npm run build
       - run: npm run aot-test
       - run: npm run docs
-      - run: npm run build
   deploy:
     docker:
       - image: circleci/node:8.9.0

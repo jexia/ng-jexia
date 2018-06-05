@@ -1,6 +1,8 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
     "moduleResolution": "node",
@@ -14,15 +16,13 @@
       "es2017",
       "dom"
     ],
-    "baseUrl": ".",
     "paths": {
       "ng-jexia": [
-        "libs/ng-jexia"
+        "dist/ng-jexia"
+      ],
+      "ng-jexia/*": [
+        "dist/ng-jexia/*"
       ]
     }
-  },
-  "exclude": [
-    "node_modules",
-    "tmp"
-  ]
+  }
 }
