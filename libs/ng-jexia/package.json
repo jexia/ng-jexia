@@ -1,14 +1,7 @@
 {
-  "$schema": "../../node_modules/ng-packagr/package.schema.json",
   "name": "ng-jexia",
   "version": "0.0.0-development",
   "license": "MIT",
-  "ngPackage": {
-    "lib": {
-      "entryFile": "index.ts"
-    },
-    "dest": "../../dist/ng-jexia"
-  },
   "author": "Jexia <community@jexia.com>",
   "contributors": [
     {
@@ -22,7 +15,7 @@
     "url": "https://github.com/jexia/ng-jexia.git"
   },
   "peerDependencies": {
-    "@angular/core": "^5.2.9",
+    "@angular/core": "^6.0.0-rc.0 || ^6.0.0",
     "jexia-sdk-js": "^3.2.5"
   }
 }

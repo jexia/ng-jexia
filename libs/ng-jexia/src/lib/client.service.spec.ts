@@ -1,8 +1,8 @@
 // tslint:disable:one-variable-per-declaration
-import { mockPrototypeOf } from '../../../testUtils';
+import { mockPrototypeOf } from '../testUtils';
 import { Client } from 'jexia-sdk-js/api/core/client';
 import { JexiaClient } from './client.service';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 
 describe('JexiaClient', () => {
 

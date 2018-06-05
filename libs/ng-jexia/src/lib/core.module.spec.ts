@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { NgJexiaModule, NgJexiaConfigToken, SubJexiaModule } from './core.module';
 import { JexiaClient } from './client.service';
-import { mockPrototypeOf } from '../../../testUtils';
+import { mockPrototypeOf } from '../testUtils';
 
 class TestClassProvider {}
 

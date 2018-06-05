@@ -1,0 +1,114 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "libs",
+  "projects": {
+    "example": {
+      "root": "",
+      "sourceRoot": "example",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/example",
+            "index": "example/index.html",
+            "main": "example/main.ts",
+            "polyfills": "example/polyfills.ts",
+            "tsConfig": "example/tsconfig.app.json",
+            "assets": [
+              "example/favicon.ico",
+              "example/assets"
+            ],
+            "styles": [
+              "example/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "example/environments/environment.ts",
+                  "with": "example/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "example:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "example:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "example:build"
+          }
+        }
+      }
+    },
+    "ng-jexia": {
+      "root": "libs/ng-jexia",
+      "sourceRoot": "libs/ng-jexia/src",
+      "projectType": "library",
+      "prefix": "jexia",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/ng-jexia/tsconfig.lib.json",
+            "project": "libs/ng-jexia/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "libs/ng-jexia/ng-package.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/ng-jexia/src/test.ts",
+            "tsConfig": "libs/ng-jexia/tsconfig.spec.json",
+            "karmaConfig": "libs/ng-jexia/karma.conf.js",
+            "codeCoverageExclude": [
+              "**/test*.ts"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ng-jexia/tsconfig.lib.json",
+              "libs/ng-jexia/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "ng-jexia"
+}
