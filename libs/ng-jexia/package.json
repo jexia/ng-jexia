@@ -16,6 +16,6 @@
   },
   "peerDependencies": {
     "@angular/core": "^6.0.0-rc.0 || ^6.0.0",
-    "jexia-sdk-js": "^3.2.5"
+    "jexia-sdk-js": "^3.3.1"
   }
 }
