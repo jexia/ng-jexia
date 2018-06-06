@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/jexia/ng-jexia/compare/v1.1.2...v1.1.3) (2018-06-06)
+
+
+### Bug Fixes
+
+* **dependencies:** update angular ([aa08f98](https://github.com/jexia/ng-jexia/commit/aa08f98))
+
 ## [1.1.2](https://github.com/jexia/ng-jexia/compare/v1.1.1...v1.1.2) (2018-06-06)
 
 
