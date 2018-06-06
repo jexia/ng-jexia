@@ -2,6 +2,11 @@
   "name": "ng-jexia",
   "version": "0.0.0-development",
   "license": "MIT",
+  "keywords": [
+    "jexia",
+    "dataset",
+    "angular"
+  ],
   "author": "Jexia <community@jexia.com>",
   "contributors": [
     {
