@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/jexia/ng-jexia/compare/v1.1.1...v1.1.2) (2018-06-06)
+
+
+### Bug Fixes
+
+* **semantic-version:** update tooling for semantic version generation ([170f0f1](https://github.com/jexia/ng-jexia/commit/170f0f1))
+
 <a name="1.0.3"></a>
 ## [1.0.3](https://github.com/jexia/ng-jexia/compare/v1.0.2...v1.0.3) (2018-04-17)
 
