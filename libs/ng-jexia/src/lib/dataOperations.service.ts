@@ -36,7 +36,7 @@ export class DataOperations {
    * }
    * ```
    */
-  dataset<T = any>(name: string): Dataset<T> {
+  dataset<T extends object = any>(name: string): Dataset<T> {
     this.client.init();
     return sdkDataOperationsModule.dataset<T>(name);
   }
