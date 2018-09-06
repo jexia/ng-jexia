@@ -1,5 +1,5 @@
 {
-  "name": "ng-jexia",
+  "name": "@jexia/ng-jexia",
   "description": "The official library to use Jexia Javascript SDK with Angular",
   "version": "0.0.0-development",
   "license": "MIT",
