@@ -17,10 +17,10 @@
       "dom"
     ],
     "paths": {
-      "ng-jexia": [
+      "@jexia/ng-jexia": [
         "dist/ng-jexia"
       ],
-      "ng-jexia/*": [
+      "@jexia/ng-jexia/*": [
         "dist/ng-jexia/*"
       ]
     }

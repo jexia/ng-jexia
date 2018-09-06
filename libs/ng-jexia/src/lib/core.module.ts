@@ -54,7 +54,7 @@ export function getModuleProviders(p: SubJexiaModule[], m: SubJexiaModule): any[
  *
  * @example
  * ```typescript
- * import { NgJexiaModule, DataOperationsModule } from 'ng-jexia';
+ * import { NgJexiaModule, DataOperationsModule } from '@jexia/ng-jexia';
  *
  * @NgModule({
  *   imports: [
