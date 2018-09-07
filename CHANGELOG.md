@@ -1,3 +1,10 @@
+## [1.1.4](https://github.com/jexia/ng-jexia/compare/v1.1.3...v1.1.4) (2018-09-07)
+
+
+### Bug Fixes
+
+* **$compile:** fix compiling error with typescript version 2.9 ([9366882](https://github.com/jexia/ng-jexia/commit/9366882))
+
 ## [1.1.3](https://github.com/jexia/ng-jexia/compare/v1.1.2...v1.1.3) (2018-06-06)
 
 
