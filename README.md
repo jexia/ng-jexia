@@ -2,6 +2,8 @@
 
 [![CircleCI](https://circleci.com/gh/jexia/ng-jexia.svg?style=svg)](https://circleci.com/gh/jexia/ng-jexia)
 
+:warning: This project is outdated, and it is not advised to make use of it anymore until it is up to speed with current version of our platform :warning:
+
 The official library to use Jexia with Angular
 
 ## Install
