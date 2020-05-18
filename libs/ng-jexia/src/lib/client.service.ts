@@ -1,7 +1,7 @@
-import { IAuthOptions } from 'jexia-sdk-js/browser';
-import { Injectable } from '@angular/core';
-import { jexiaClient } from 'jexia-sdk-js/browser';
+import { Inject, Injectable } from '@angular/core';
+import { IAuthOptions, jexiaClient } from 'jexia-sdk-js/browser';
 import { IModule } from 'jexia-sdk-js/api/core/module';
+import { NgJexiaConfigToken, NgJexiaModulesToken } from './tokens';
 
 /**
  * Main Client Service for ng-jexia, the Angular Adapter of Jexia JavaScript SDK
@@ -19,8 +19,8 @@ export class JexiaClient {
  * @param modules Jexia SubModules
  */
 constructor(
-    private config: IAuthOptions,
-    private modules: IModule[],
+    @Inject(NgJexiaConfigToken) private config: IAuthOptions,
+    @Inject(NgJexiaModulesToken) private modules: IModule[],
   ) {
     this.init();
   }

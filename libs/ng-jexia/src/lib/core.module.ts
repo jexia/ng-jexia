@@ -1,7 +1,8 @@
-import { InjectionToken, ModuleWithProviders, Provider, NgModule, Optional, SkipSelf } from '@angular/core';
+import { ModuleWithProviders, Provider, NgModule, Optional, SkipSelf } from '@angular/core';
 import { IAuthOptions } from 'jexia-sdk-js/browser';
 import { IModule } from 'jexia-sdk-js/api/core/module';
 import { JexiaClient } from './client.service';
+import { NgJexiaConfigToken, NgJexiaModulesToken } from './tokens';
 
 /**
  * Internal Jexia Module Interface
@@ -12,7 +13,7 @@ export interface SubJexiaModule {
    */
   sdkModule: IModule;
   /**
-   * Angular servicers that will be provider
+   * Angular services that will be provider
    */
   providers?: Provider;
 }
@@ -26,16 +27,6 @@ export interface NgJexiaConfig extends IAuthOptions {
    */
   providers?: SubJexiaModule[];
 }
-
-/**
- * @internal
- */
-export const NgJexiaConfigToken = new InjectionToken<NgJexiaConfig>('NgJexiaConfig');
-
-/**
- * @internal
- */
-export const NgJexiaModulesToken = new InjectionToken<Provider>('NgJexiaModules');
 
 /**
  * @internal
@@ -78,7 +69,7 @@ export class NgJexiaModule {
   /**
    * Initialization method of ng-jexia module that receive configuration parameters and jexia modules
    */
-  static initialize({ providers = [], ...config }: NgJexiaConfig): ModuleWithProviders {
+  static initialize({ providers = [], ...config }: NgJexiaConfig): ModuleWithProviders<NgJexiaModule> {
     return {
       ngModule: NgJexiaModule,
       providers: [
@@ -87,16 +78,12 @@ export class NgJexiaModule {
         {
           provide: JexiaClient,
           useClass: JexiaClient,
-          deps: [
-            NgJexiaConfigToken,
-            NgJexiaModulesToken,
-          ],
         },
       ].concat(providers.reduce(getModuleProviders, [])),
     };
   }
 
-  constructor( @Optional() @SkipSelf() parentModule: NgJexiaModule) {
+  constructor(@Optional() @SkipSelf() parentModule: NgJexiaModule) {
     if (parentModule) {
       throw new Error('NgJexiaModule is already loaded.');
     }

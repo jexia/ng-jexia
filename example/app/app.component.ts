@@ -15,12 +15,12 @@ interface User {
 export class AppComponent {
 
   userDataset = this.dataOperations.dataset<User>('myusers');
-  users = this.userDataset.select().execute();
+  users$ = this.userDataset.select();
 
   constructor(
     private dataOperations: DataOperations,
   ) {
-    this.userDataset.insert([{ name: 'joao', age: 99 }]).execute();
+    this.userDataset.insert([{ name: 'joao', age: 99 }]).subscribe();
   }
 
 }

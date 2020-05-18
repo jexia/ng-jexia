@@ -1,7 +1,7 @@
 <h2>Jexia</h2>
 
 <ul>
-  <li *ngFor="let user of users | async">
+  <li *ngFor="let user of users$ | async">
     <b>{{user.name}}:</b> {{user.age}}
   </li>
 </ul>
