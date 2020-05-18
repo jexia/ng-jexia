@@ -1,7 +1,8 @@
 import { TestBed } from '@angular/core/testing';
-import { NgJexiaModule, NgJexiaConfigToken, SubJexiaModule } from './core.module';
+import { NgJexiaModule, SubJexiaModule } from './core.module';
 import { JexiaClient } from './client.service';
 import { mockPrototypeOf } from '../testUtils';
+import {NgJexiaConfigToken} from './tokens';
 
 class TestClassProvider {}
 
@@ -44,7 +45,7 @@ describe('CoreModule', () => {
         NgJexiaModule.initialize(config as any),
       ],
     });
-    expect(TestBed.get(NgJexiaConfigToken)).toEqual(config);
+    expect(TestBed.inject(NgJexiaConfigToken) as any).toEqual(config);
   });
 
   it('should provide sub module providers', () => {
