@@ -91,6 +91,21 @@
   },
   "release": {
     "branch": "master",
+    "plugins": [
+      [
+        "@semantic-release/commit-analyzer",
+        {
+          "preset": "angular",
+          "releaseRules": [
+            {
+              "type": "build",
+              "scope": "js-sdk",
+              "release": "minor"
+            }
+          ]
+        }
+      ]
+    ],
     "verifyConditions": [
       "condition-circle",
       "@semantic-release/changelog",
