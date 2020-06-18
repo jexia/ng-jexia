@@ -117,5 +117,8 @@
       }
     }
   },
-  "defaultProject": "ng-jexia"
+  "defaultProject": "ng-jexia",
+  "cli": {
+    "analytics": false
+  }
 }
