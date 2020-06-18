@@ -1,17 +1,15 @@
 # NgJexia
 
 [![CircleCI](https://circleci.com/gh/jexia/ng-jexia.svg?style=svg)](https://circleci.com/gh/jexia/ng-jexia)
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
-:warning: This project is outdated, and it is not advised to make use of it anymore until it is up to speed with current version of our platform :warning:
 
-The official library to use Jexia with Angular
+The official library to use Jexia with Angular. Currently we are only supporting **Datasets**, but planning to make *Filesets, Project Users* and *Real-time Communication* available in a near future.
 
 ## Install
 
-Install this package along with Jexia JavaScript JDK:
-
 ```bash
-npm install ng-jexia jexia-sdk-js --save
+npm install ng-jexia --save
 ```
 
 ## Quick Start
@@ -49,9 +47,8 @@ import { DataOperations } from 'ng-jexia';
   styleUrls: ['app.component.css']
 })
 export class AppComponent {
-
   userDataset = this.dataOperations.dataset<User>('myusers');
-  users = this.userDataset.select().execute();
+  users = this.userDataset.select();
 
   constructor(
     private dataOperations: DataOperations,
@@ -76,7 +73,7 @@ and run the whole application it with `npm start` command at the root of this pr
 
 ### Api Docs
 
-Check out the [ng-jexia docs](https://jexia.github.io/ng-jexia/) and the [JavaScript SDK Docs](https://jexia.github.io/jexia-sdk-js/)
+Check out the [ng-jexia docs](https://jexia.github.io/ng-jexia/) and the [JavaScript SDK Docs](https://docs.jexia.com/tools/)
 for a detailed view of the Api of both this Angular adapter and the original [JavaScript SDK](https://github.com/jexia/jexia-sdk-js/).
 
 ### Contributing
