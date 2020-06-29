@@ -87,6 +87,7 @@
           },
           "configurations": {
             "production": {
+              "tsConfig": "libs/ng-jexia/tsconfig.lib.prod.json",
               "project": "libs/ng-jexia/ng-package.prod.json"
             }
           }
