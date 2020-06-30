@@ -9,7 +9,7 @@ The official library to use Jexia with Angular. Currently we are only supporting
 ## Install
 
 ```bash
-npm install ng-jexia --save
+npm install @jexia/ng-jexia --save
 ```
 
 ## Quick Start
