@@ -81,7 +81,7 @@
     "karma-jasmine-html-reporter": "^1.5.1",
     "karma-mocha-reporter": "^2.2.5",
     "ng-packagr": "^9.0.0",
-    "semantic-release": "^17.0.8",
+    "semantic-release": "^19.0.3",
     "shelljs": "^0.8.2",
     "shx": "^0.2.2",
     "ts-node": "~5.0.1",
